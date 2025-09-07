@@ -1,0 +1,21 @@
+{% load django_vite %}
+{% if DJANGO_VITE_DEV_MODE %}{% vite_hmr_client %}{% endif %}
+{% vite_asset 'src/main.jsx' %}
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vite + Django</title>
+
+    {% if DJANGO_VITE_DEV_MODE %}
+      {% vite_hmr_client %}  {# สำหรับ HMR ตอน dev #}
+    {% endif %}
+  </head>
+  <body>
+    <div id="root"></div>
+
+    {# ชี้ไปที่ entry ฝั่ง Vite (JS version) #}
+    {% vite_asset 'src/main.jsx' %}
+  </body>
+</html>
